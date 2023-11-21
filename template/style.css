@@ -326,55 +326,198 @@ textarea {
 
 .profileContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-top: 20px;
     width: 150vh;
     height: 75vh;
-    background-color: rgba(255, 255, 255, 0.500);
-    border-radius: 25px;
-    backdrop-filter: blur(50px);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    justify-content: space-between;
+    /* background-color: rgba(255, 255, 255, 0.500); */
+    /* border-radius: 25px; */
+    /* backdrop-filter: blur(50px); */
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
 }
 
 .dataUSer {
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
-    width: 78vh;
+    /* margin-left: 20px; */
+    /* width: 78vh; */
     height: 67.6vh;
-    background-color: rgba(255, 255, 255, 0.500);
+    /* background-color: rgba(255, 255, 255, 0); */
     border-radius: 25px;
-    backdrop-filter: blur(50px);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    /* backdrop-filter: blur(50px); */
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
 }
 
 .profileImage {
-    border-radius: 25px;
-    margin-top: 27px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    /* margin-top: 27px; */
     object-fit: cover;
-    height: 60vh;
-    width: 60vh;
-    border: 5px solid #ffffff92;
+    height: 40vh;
+    width: 40vh;
+    /* border: 5px solid #ffffff; */
     /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
 
 }
 
 .profileContent {
     display: flex;
-    margin-top: 30px;
-    margin-left: 50px;
+    flex-direction: column;
+
 }
 
 .profleData {
-    /* margin-top: 30px; */
-    margin-left: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 165px;
+    max-height: 300px;
     background-color: rgba(255, 255, 255, 0.901);
     padding: 8px 12px;
-    width: fit-content;
     border-radius: 17px;
     box-shadow: rgba(149, 157, 165, 0.36) 0px 8px 24px;
 }
 
 .profileOuter {
-    margin-top: 20px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.cardProfile {
+    background-color: rgba(255, 255, 255, 0.506);
+    width: 45.5vh;
+    padding: 20px 20px 20px 20px;
+    justify-content: space-around;
+    border-radius: 25px;
+    align-items: center;
+    backdrop-filter: blur(50px) !important;
+}
+
+.infoWrap {
+    padding: 10px 10px 0px 10px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.editButton {
+    border-radius: 15px;
+    padding: 10px 10px 10px 10px;
+    background-color: #f5f6fa;
+}
+
+.cardContent {
+    background-color: rgba(255, 255, 255, 0.506);
+    width: 102vh;
+    height: 76.3vh;
+    /* padding: 20px 20px 20px 20px; */
+    justify-content: space-around;
+    border-radius: 25px;
+    align-items: center;
+    backdrop-filter: blur(50px) !important;
+}
+
+.imageCarrousel {
+    border-radius: 20px;
+    margin-bottom: 10px;
+    object-fit: cover;
+    align-items: center;
+    height: 35vh;
+    width: 40vh;
+    object-position: center;
+    filter: brightness(50%);
+
+}
+
+.carousel {
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+}
+
+.groupList {
+    margin-left: 15px;
+    margin-top: 15px;
+    max-width: fit-content;
+    max-height: 300px;
+    background-color: rgba(255, 255, 255, 0.461);
+    padding: 8px 12px;
+    border-radius: 17px;
+    box-shadow: rgba(149, 157, 165, 0.36) 0px 8px 24px;
+}
+
+.imageContainerHome {
+    padding: 10px 10px 30px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.srcollBarHome {
+    margin-left: 20px;
+    min-width: 70vh;
+    max-width: 97vh;
+    overflow-x: auto;
+    /* overflow: hidden; */
+}
+
+.srcollBarHome::-webkit-scrollbar {
+    display: none;
+}
+
+.groupImageHome {
+    /* margin-top: 20px; */
+    object-fit: cover;
+    height: 100px;
+    width: 100px;
+    border: 1.5px solid #00000000;
+}
+
+
+.groupListHome {
+    max-width: fit-content;
+    max-height: 300px;
+    background-color: rgba(255, 255, 255, 0.461);
+    padding: 8px 12px;
+    border-radius: 17px;
+    /* box-shadow: rgba(149, 157, 165, 0.36) 0px 8px 24px; */
+}
+
+.groupListHome {
+    display: flex;
+    flex-direction: column;
+}
+
+.groupNameCard {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100px;
+    max-height: 300px;
+    text-align: center;
+}
+
+#teksOverlay {
+    position: absolute;
+    top: 70%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    z-index: 1;
+    color: white;
+    /* padding: 20px; */
+    max-width: 80%;
+}
+
+.carousel {
+    position: relative;
+}
+
+.carousel-item {
+    position: relative;
 }

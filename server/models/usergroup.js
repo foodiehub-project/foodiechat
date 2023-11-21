@@ -61,5 +61,10 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'UserGroup',
   });
+  UserGroup.beforeCreate((user) => {
+    if(!user.role) {
+      user.role = "member"
+    }
+  });
   return UserGroup;
 };

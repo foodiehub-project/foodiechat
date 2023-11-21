@@ -28,11 +28,6 @@ body {
     border-radius: 17px;
     backdrop-filter: blur(20px);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    /* margin: 10px 10px 10px 10px; */
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between; */
 }
 
 .logoOuter {
@@ -301,9 +296,85 @@ textarea {
     height: 40px;
     width: 40px;
     border: 1.5px solid #000000;
-
 }
 
 .cusBtn:hover {
     outline: none !important;
+}
+
+/* Profile page */
+
+.wholeOuterProfile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.topBar {
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 20px; */
+    margin-top: 7vh;
+    width: 150vh;
+    height: 8vh;
+    background-color: rgba(255, 255, 255, 0.500);
+    border-radius: 17px;
+    backdrop-filter: blur(50px);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 150vh;
+    height: 75vh;
+    background-color: rgba(255, 255, 255, 0.500);
+    border-radius: 25px;
+    backdrop-filter: blur(50px);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.dataUSer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    width: 78vh;
+    height: 67.6vh;
+    background-color: rgba(255, 255, 255, 0.500);
+    border-radius: 25px;
+    backdrop-filter: blur(50px);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.profileImage {
+    border-radius: 25px;
+    margin-top: 27px;
+    object-fit: cover;
+    height: 60vh;
+    width: 60vh;
+    border: 5px solid #ffffff92;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
+
+}
+
+.profileContent {
+    display: flex;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.profleData {
+    /* margin-top: 30px; */
+    margin-left: 20px;
+    background-color: rgba(255, 255, 255, 0.901);
+    padding: 8px 12px;
+    width: fit-content;
+    border-radius: 17px;
+    box-shadow: rgba(149, 157, 165, 0.36) 0px 8px 24px;
+}
+
+.profileOuter {
+    margin-top: 20px;
 }

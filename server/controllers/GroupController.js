@@ -23,6 +23,14 @@ class GroupController {
             next(error);
         }
     }
+    static async editGroup(req, res, next) {
+        try {
+        
+        }
+        catch(error) {
+            next(error);
+        }
+    }
 }
 
 module.exports = GroupController;

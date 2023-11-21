@@ -6,6 +6,6 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 const GroupController = require('../controllers/GroupController');
 
-router.get("/", GroupController.addGroups);
+router.post("/", GroupController.addGroups);
 
 module.exports = router;

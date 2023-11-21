@@ -5,6 +5,7 @@ const { User } = require('../models')
 const cloudinary = require('cloudinary').v2;
 
 const { randomUUID } = require('crypto');
+const { Op } = require("sequelize");
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -42,6 +43,26 @@ class UserController {
             next(error);
         }
     }
+    static async getUser(req, res, next) {
+        try {
+            let options = { where: {} };
+            if(req.query.search) {
+                options.where.fullName = { [Op.iLike]: `%${req.query.search}%` };
+            }
+        
+            const users = await User.findAll(options);
+        
+            const userList = users.map(user => {
+                return { id: user.id, fullName: user.fullName };
+            });
+        
+            res.status(200).json(userList);
+        }
+        catch(error) {
+            next(error);
+        }
+    }
+
 }
 
 module.exports = UserController;

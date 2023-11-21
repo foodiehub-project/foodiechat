@@ -12,6 +12,8 @@ const authentication = require('../middlewares/authentication');
 
 const router = express.Router();
 
+router.post('/login', AuthController.login)
+
 router.post('/auth/google/callback', AuthController.googleLogin);
 
 router.use(authentication);

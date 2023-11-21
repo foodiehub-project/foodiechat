@@ -4,17 +4,15 @@ if(process.env.NODE_ENV !== "production") {
 
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3000;
-const cors = require("cors")
-const authentication = require("./middlewares/authentication.js");
-const errorHandler = require("./middlewares/errorHandler.js");
-const multer = require("multer");
 
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+const cors = require("cors")
+
+const routers = require("./routes/index.js");
 
 app.use(cors());
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+
+app.use(routers);
 
 module.exports = app;

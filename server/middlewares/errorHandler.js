@@ -17,6 +17,7 @@ function errorHandler(error, req, res, next) {
             res.status(403).json({ message: "Forbidden Access" });
             break;
         case "SequelizeDatabaseError":
+        case "NotFound":
             res.status(404).json({ message: "Data not found" });
             break;
         default :

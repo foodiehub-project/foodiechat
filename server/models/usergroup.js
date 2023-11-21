@@ -10,13 +10,53 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      UserGroup.belongsTo(models.User);
+      UserGroup.belongsTo(models.Group);
     }
   }
   UserGroup.init({
-    role: DataTypes.STRING,
-    GroupId: DataTypes.INTEGER,
-    UserId: DataTypes.INTEGER
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "User Role must not be empty"
+        },
+        notEmpty: {
+          args: true,
+          msg: "User Role must not be empty"
+        },
+      },
+    },
+    GroupId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "GroupId must not be empty"
+        },
+        notEmpty: {
+          args: true,
+          msg: "GroupId must not be empty"
+        },
+      }
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "UserId must not be empty"
+        },
+        notEmpty: {
+          args: true,
+          msg: "UserId must not be empty"
+        },
+      }
+    },
   }, {
     sequelize,
     modelName: 'UserGroup',

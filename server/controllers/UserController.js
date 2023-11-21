@@ -1,13 +1,15 @@
 'use strict';
 
+const { User } = require('../models')
+
 const cloudinary = require('cloudinary').v2;
 
 const { randomUUID } = require('crypto');
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET
+    api_key: process.env.CLOUD_API_KEY,
+    api_secret: process.env.CLOUD_API_SECRET
 });
 
 
@@ -24,6 +26,10 @@ class UserController {
                 public_id: `${req.file.originalname}_${randomUUID()}`,
                 folder: 'news'
             });
+
+            const user = User.findByPk(userId);
+
+            if (!user) throw { name: "NotFound" };
 
             await User.update({ profilePicture: data.secure_url, fullName }, {
                 where: {

@@ -1,10 +1,13 @@
 function errorHandler(error, req, res, next) {
     console.log(error) //for development only
-    switch(error.name) {
+    switch (error.name) {
         case "InvalidToken":
         case "Unauthenticated":
         case "JsonWebTokenError":
             res.status(401).json({ message: error.message });
+            break;
+        case 'ValidationError':
+            res.status(400).json({message: "You have to input image file"})
             break;
         case "InvalidInput":
             res.status(400).json({ message: error.message });
@@ -20,7 +23,7 @@ function errorHandler(error, req, res, next) {
         case "NotFound":
             res.status(404).json({ message: "Data not found" });
             break;
-        default :
+        default:
             res.status(500).json({ message: "Internal Server Error" })
             break;
     }

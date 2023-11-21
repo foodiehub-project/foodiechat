@@ -19,11 +19,21 @@ body {
 .sideBar {
     margin-left: 20px;
     margin-top: 20px;
-    width: 6vh;
+    width: 10vh;
     height: 95vh;
     background-color: rgba(255, 255, 255, 0.375);
     border-radius: 17px;
     backdrop-filter: blur(30px);
+    /* margin: 10px 10px 10px 10px; */
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; */
+}
+
+.srcollBar {
+    max-height: 40vh;
+    overflow-y: auto;
 }
 
 .chatContainer {
@@ -31,22 +41,23 @@ body {
     flex-direction: column;
     margin-left: 20px;
     margin-top: 20px;
-    width: 175vh;
+    width: 170vh;
     height: 95vh;
-    background-color: rgba(255, 255, 255, 0.375);
+    background-color: rgba(255, 255, 255, 0.358);
     border-radius: 25px;
     backdrop-filter: blur(30px);
 }
 
-.scrollBubble{
-    max-height: 500px; /* Atur ketinggian maksimum untuk scroll */
+.scrollBubble {
+    max-height: 500px;
+    /* Atur ketinggian maksimum untuk scroll */
     overflow-y: auto;
 }
 
 .chatContext {
     margin-left: 20px;
-    margin-top: 10px;
-    width: 170vh;
+    /* margin-top: 10px; */
+    width: 165vh;
     height: 75vh;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 25px;
@@ -57,26 +68,37 @@ body {
     margin-left: 20px;
     margin-top: 10px;
     margin-bottom: 20px;
-    width: 170vh;
+    width: 165vh;
     height: 7vh;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 17px;
     backdrop-filter: blur(50px);
 }
 
-.groupName {
+.groupNameContainer {
     display: flex;
     flex-direction: row;
     text-align: center;
     align-items: center;
-    margin-left: 20px;
+    margin-left: 10px;
     margin-top: 20px;
-    padding: 10px 10px 10px 10px;
+    /* padding: 10px 10px 10px 10px; */
     width: 40vh;
     height: 7vh;
-    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 17px;
+    max-width: 70%;
+}
+
+.groupName {
+    margin-left: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 8px 12px;
+    border-radius: 17px;
+    color: #000;
+    font-weight: normal;
+    max-width: 70%;
     backdrop-filter: blur(50px);
+    box-shadow: rgba(149, 157, 165, 0.142) 0px 8px 24px;
 }
 
 .chatBubbleContainer {
@@ -114,22 +136,85 @@ body {
 }
 
 .name-container {
-    /* margin-left: 10px; */
-    background-color: rgb(255, 255, 255);
+    margin-left: 10px;
+    /* margin-bottom: 10px; */
+    display: flex;
+    /* background-color: rgb(255, 255, 255); */
     padding: 8px 12px;
     border-radius: 17px;
     color: #000;
     font-weight: normal;
     max-width: fit-content;
-    box-shadow: rgba(149, 157, 165, 0.142) 0px 8px 24px;
+    /* box-shadow: rgba(149, 157, 165, 0.142) 0px 8px 24px; */
+}
+
+.name-container p {
+    margin: 9px 0 10px 10px;
 }
 
 .name-containerR {
-    background-color: rgb(255, 255, 255);
+    display: flex;
+    /* background-color: rgb(255, 255, 255); */
     padding: 8px 12px;
     border-radius: 17px;
     color: #000;
     font-weight: normal;
     max-width: fit-content;
-    box-shadow: rgba(149, 157, 165, 0.142) 0px 8px 24px;
+    /* box-shadow: rgba(149, 157, 165, 0.142) 0px 8px 24px; */
+}
+
+.name-containerR p {
+    margin: 9px 0 10px 10px;
+}
+
+.user_img_msg {
+    height: 40px;
+    width: 40px;
+    border: 1.5px solid #f5f6fa;
+
+}
+
+.card-footer {
+    margin-top: 8px;
+    margin-left: 20px;
+    margin-right: 10px;
+    border-radius: 0 0 15px 15px !important;
+    border-top: 0 !important;
+}
+
+.type_msg {
+    background-color: rgba(19, 13, 13, 0) !important;
+    border: 0 !important;
+    color: rgb(0, 0, 0) !important;
+    height: 40px !important;
+    overflow-y: auto;
+}
+
+textarea {
+    resize: none !important;
+}
+
+.send_btn {
+    border-radius: 13px !important;
+    background-color: rgba(0, 0, 0, 0.337) !important;
+    border: 0 !important;
+    color: rgb(255, 255, 255) !important;
+    cursor: pointer;
+}
+
+.imageContainer {
+    margin: 10px 10px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.groupImage {
+    margin-top: 20px;
+    object-fit: cover;
+    height: 55px;
+    width: 55px;
+    border: 1.5px solid #f5f6fa40;
+
 }

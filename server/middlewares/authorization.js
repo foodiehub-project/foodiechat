@@ -2,7 +2,7 @@
 
 const authorizationAdminOnly = async (req, res, next) => {
     try {
-        if (req.user.rol === "admin") {
+        if (req.user.role === "admin") {
             next()
         } else {
             throw { name: "Forbidden" }

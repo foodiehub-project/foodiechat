@@ -560,3 +560,16 @@ textarea {
     align-items: center;
 }
 
+/* Add Group */
+
+.groupContent {
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.506);
+    width: 102vh;
+    height: 76.3vh;
+    /* padding: 20px 20px 20px 20px; */
+    justify-content: space-around;
+    border-radius: 25px;
+    align-items: center;
+    backdrop-filter: blur(50px) !important;
+}

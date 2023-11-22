@@ -14,6 +14,25 @@ cloudinary.config({
 });
 
 class UserController {
+
+    static async getUserDetail(req, res, next) {
+        try {
+            const { userId } = req.params
+
+            const user = await User.findByPk(id, {
+                attributes: [
+                    "email", "fullname", "wallpaper", "profilePicture", "createdAt"
+                ]
+            })
+
+            if (!user) throw {name: "NotFound"}
+
+            res.status(200).json(user);
+        } catch (error) {
+            next(error)
+        }
+    }
+
     static async editProfile(req, res, next) {
         try {
             const { userId } = req.params;

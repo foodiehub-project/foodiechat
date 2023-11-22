@@ -222,6 +222,7 @@ body {
     color: #000;
     font-weight: normal;
     max-width: fit-content;
+    min-width: 50rem;
     /* box-shadow: rgba(149, 157, 165, 0.142) 0px 8px 24px; */
 }
 

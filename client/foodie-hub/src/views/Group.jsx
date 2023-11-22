@@ -8,18 +8,22 @@ import {
   onSnapshot,
   limit,
   addDoc, 
+  where,
   serverTimestamp,
 } from "firebase/firestore";
 import { useParams } from "react-router-dom"
+import swal from "sweetalert"
 
 export default function Group() {
     const [groupMessages, setGroupMessages] = useState([]);
     const [message, setMessage] = useState("");
-    // const scroll = useRef();
+    const { groupId } = useParams()
+    const scroll = useRef();
 
     useEffect(() => {
         const q = query(
           collection(db, "messages"),
+          where("groupId", "==", +groupId),
           orderBy("createdAt", "desc"),
           limit(50)
         );
@@ -33,30 +37,40 @@ export default function Group() {
           );
           setGroupMessages(sortedMessages);
         });
-        console.log(groupMessages)
         return () => unsubscribe;
-      }, []);
+    }, []);
     
     const handleSubmit = async (event) => {
         event.preventDefault();
+        console.log(groupMessages, "<<<<<<<<")
         try {
-            console.log("HELLO")
+            if(!message) {
+                throw { name: "InvalidMessage" }
+            }
             const { id, name } = localStorage;
-            const { groupId } = useParams()
             await addDoc(collection(db, "messages"), {
                 text: message,
                 name: name,
                 createdAt: serverTimestamp(),
-                groupId,
-                id,
+                groupId: +groupId,
+                userId: id,
             });
             setMessage("");
+            scroll.current.scrollIntoView({ behavior: "smooth" });
         }
         catch(error) {
-            sweetAlert({
-                text: "An Error Has Occured",
-                icon: "error"
-            });
+            if(error.name === "InvalidMessage") {
+                swal({
+                    text: "Message cannot be empty",
+                    icon: "error"
+                });
+            }
+            else {
+                swal({
+                    text: error.response.data.message,
+                    icon: "error"
+                });
+            }
         }
     }
     const handleChange = async (event) => {
@@ -106,16 +120,32 @@ export default function Group() {
       <div className="chatContext">
         <div className="chatBubbleContainer">
           <div className="message-container scrollBubble">
-            {groupMessages.map((message) => {
-                <div className="leftBubble">
-                <div className="name-container">
-                    <p>{message.name}</p>
-                </div>
-                <p className="message-content">
-                    {message.text}
-                </p>
-                </div>
+            {groupMessages.map((message, index) => {
+                if(message.userId === localStorage.id) {
+                    return (
+                        <div key={index} className="rightBubble">
+                        <div className="name-containerR rightName">
+                            <p>{message.name}</p>
+                        </div>
+                        <p className="message-content rightMessage">
+                            {message.text}
+                        </p>
+                        </div>
+                    )
+                } else if(message.userId !== localStorage.id) {
+                    return (
+                        <div key={index} className="leftBubble">
+                        <div className="name-container">
+                            <p>{message.name}</p>
+                        </div>
+                        <p className="message-content">
+                            {message.text}
+                        </p>
+                        </div>
+                    )
+                }
             })}
+            <span ref={scroll}></span>
           </div>
         </div>
       </div>
@@ -131,7 +161,7 @@ export default function Group() {
             name="message"
             className="form-control type_msg"
             placeholder="Type your message..."
-            defaultValue={message}
+            value={message}
           />
           <button type="submit" className="input-group-text send_btn">
               Send

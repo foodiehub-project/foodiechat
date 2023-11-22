@@ -8,6 +8,8 @@ const { authorizationAdminOnly } = require('../middlewares/authorization');
 
 router.post("/", GroupController.addGroups);
 
+router.get("/:groupId", GroupController.getGroupById);
+
 router.delete("/:groupId", authorizationAdminOnly, GroupController.deleteGroup);
 
 module.exports = router;

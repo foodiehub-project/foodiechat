@@ -1,5 +1,5 @@
 'use strict';
-const { Group, UserGroup } = require('../models');
+const { User, Group, UserGroup } = require('../models');
 
 class GroupController {
     static async addGroups(req, res, next) {
@@ -49,6 +49,38 @@ class GroupController {
             res.status(200).json({ message: `Group ${selectedGroup.name} successfully deleted` })
         }
         catch (error) {
+            next(error);
+        }
+    }
+    static async getGroupById(req, res, next) {
+        try {
+            const { groupId } = req.params;
+
+            const selectedGroup = await Group.findOne({
+                where: {
+                    "$id$": groupId
+                },
+                include: {
+                    model: UserGroup,
+                    attributes: [
+                        "id", "UserId", "role"
+                    ],
+                    include: {
+                        model: User,
+                        attributes: [
+                            "id", "fullName", "profilePicture"
+                        ]
+                    }
+                }
+            });
+            
+            if (!selectedGroup) {
+                throw { name: "NotFound" };
+            }
+
+            res.status(200).json(selectedGroup);
+        }
+        catch(error) {
             next(error);
         }
     }

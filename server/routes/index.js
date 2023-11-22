@@ -9,10 +9,13 @@ const userRouter = require('./user.js')
 
 const errorHandler = require('../middlewares/errorHandler');
 const authentication = require('../middlewares/authentication');
+const HomeController = require('../controllers/HomeController.js');
 
 const router = express.Router();
 
-router.post('/login', AuthController.login)
+router.get('/', HomeController.statusServer);
+
+router.post('/login', AuthController.login);
 
 router.post('/auth/google/callback', AuthController.googleLogin);
 

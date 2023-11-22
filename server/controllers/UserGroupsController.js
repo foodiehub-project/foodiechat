@@ -37,7 +37,8 @@ class UserGroupsController {
 
             await UserGroup.destroy({
                 where: {
-                    id: userGroupId
+                    UserId,
+                    GroupId: groupId
                 }
             })
 
@@ -72,6 +73,28 @@ class UserGroupsController {
             res.status(201).json({ message: `You have added new member to the group` })
         } catch (error) {
             next(error);
+        }
+    }
+
+    static async getAllMembers(req, res, next) {
+        try {
+            const { groupId } = req.params
+
+            const members = await UserGroup.findAll({
+                where: {
+                    GroupId: groupId
+                },
+                include: {
+                    model: User,
+                    attributes: [
+                        "id", "email", "fullName", "wallpaper", "profilePicture", "createdAt"
+                    ]
+                }
+            })
+            
+            res.status(200).json(members)
+        } catch (error) {
+            next(error)
         }
     }
 }

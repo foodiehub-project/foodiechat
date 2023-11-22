@@ -1,9 +1,11 @@
 const express = require('express');
 const UserGroupsController = require('../controllers/UserGroupsController');
-const {authorizationAdminOnly, authorizationMemberOnly} = require('../middlewares/authorization');
+const { authorizationAdminOnly, authorizationMemberOnly } = require('../middlewares/authorization');
 const router = express.Router();
 
 router.get('/', UserGroupsController.getMyGroups);
+
+router.get('/:groupId', UserGroupsController.getAllMembers)
 
 router.post('/:groupId', authorizationAdminOnly, UserGroupsController.addMember);
 

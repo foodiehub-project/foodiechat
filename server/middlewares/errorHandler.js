@@ -1,5 +1,4 @@
 function errorHandler(error, req, res, next) {
-    // console.log(error) //for development only
     switch (error.name) {
         case "InvalidToken":
         case "Unauthenticated":
@@ -9,10 +8,10 @@ function errorHandler(error, req, res, next) {
             res.status(401).json({ message: "Invalid Token" });
             break;
         case "DuplicatedData":
-            res.status(400).json({message: `${error.memberName} already in your group`})    
-        break;
+            res.status(400).json({ message: `${error.memberName} already in your group` })
+            break;
         case 'ValidationError':
-            res.status(400).json({message: "You have to input image file"})
+            res.status(400).json({ message: "You have to input image file" })
             break;
         case "InvalidInput":
             res.status(400).json({ message: error.message });

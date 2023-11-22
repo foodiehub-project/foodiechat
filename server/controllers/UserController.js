@@ -13,12 +13,11 @@ cloudinary.config({
     api_secret: process.env.CLOUD_API_SECRET
 });
 
-
 class UserController {
     static async editProfile(req, res, next) {
         try {
             const { userId } = req.params;
-            const {fullName} = req.body
+            const { fullName } = req.body
             // console.log(fullName);
 
             if (!req.file) throw { name: 'ValidationError' };
@@ -33,7 +32,7 @@ class UserController {
 
             if (!user) throw { name: "NotFound" };
 
-            await User.update({ profilePicture: data.secure_url, fullName}, {
+            await User.update({ profilePicture: data.secure_url, fullName }, {
                 where: {
                     id: userId
                 }
@@ -44,22 +43,23 @@ class UserController {
             next(error);
         }
     }
+
     static async getUser(req, res, next) {
         try {
             let options = { where: {} };
-            if(req.query.search) {
+            if (req.query.search) {
                 options.where.fullName = { [Op.iLike]: `%${req.query.search}%` };
             }
-        
+
             const users = await User.findAll(options);
-        
+
             const userList = users.map(user => {
                 return { id: user.id, fullName: user.fullName };
             });
-        
+
             res.status(200).json(userList);
         }
-        catch(error) {
+        catch (error) {
             next(error);
         }
     }

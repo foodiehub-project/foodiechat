@@ -48,7 +48,7 @@ const authorizationMemberOnly = async (req, res, next) => {
     }
 }
 
-module.exports = { 
-    authorizationAdminOnly, 
-    authorizationMemberOnly 
+module.exports = {
+    authorizationAdminOnly,
+    authorizationMemberOnly
 }

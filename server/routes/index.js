@@ -2,14 +2,13 @@
 const express = require('express');
 
 const AuthController = require('../controllers/AuthController');
-const GroupController = require('../controllers/GroupController');
+const HomeController = require('../controllers/HomeController.js');
 const groupRouter = require('./group.js');
 const userGroupRouter = require('./userGroup.js');
 const userRouter = require('./user.js')
 
 const errorHandler = require('../middlewares/errorHandler');
 const authentication = require('../middlewares/authentication');
-const HomeController = require('../controllers/HomeController.js');
 
 const router = express.Router();
 

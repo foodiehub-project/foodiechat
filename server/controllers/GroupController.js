@@ -17,27 +17,20 @@ class GroupController {
                 role: "admin"
             });
 
-            res.status(201).json({ message: `Group ${createGroup.name} has been created`});
+            res.status(201).json({ message: `Group ${createGroup.name} has been created` });
         }
-        catch(error) {
+        catch (error) {
             next(error);
         }
     }
-    static async editGroup(req, res, next) {
-        try {
-        
-        }
-        catch(error) {
-            next(error);
-        }
-    }
+
     static async deleteGroup(req, res, next) {
         try {
             const { groupId } = req.params;
 
             const selectedGroup = await Group.findByPk(groupId);
 
-            if(!selectedGroup) {
+            if (!selectedGroup) {
                 throw { name: "NotFound" };
             }
 
@@ -53,9 +46,9 @@ class GroupController {
                 },
             });
 
-            res.status(200).json({ message: `Group ${selectedGroup.name} successfully deleted`})
+            res.status(200).json({ message: `Group ${selectedGroup.name} successfully deleted` })
         }
-        catch(error) {
+        catch (error) {
             next(error);
         }
     }

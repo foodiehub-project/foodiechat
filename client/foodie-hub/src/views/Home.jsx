@@ -1,8 +1,79 @@
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserGroups } from "../store/userGroups";
+import { useEffect, useState } from "react";
+import url from "../constants";
+
 export default function Home() {
-    
+  // const { data, loading, error } = useSelector((state) => state.userGroups)
+  // const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   dispatch(fetchUserGroups())
+  // }, [dispatch, fetchUserGroups])
+
+  // console.log(error);
+  const navigate = useNavigate();
+
+  const handleValue = async (event, groupId) => {
+    event.preventDefault();
+    try {
+      const userData = { groupId };
+
+      const { data } = await axios.post(`${url}/${groupId}`, userData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.access_token}`,
+        },
+      });
+      console.log(data);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  async function getGroups() {
+    try {
+      const { data } = await axios.get(url + "/user-groups", {
+        headers: {
+          Authorization: `Bearer ${localStorage.access_token}`,
+        },
+      });
+      console.log(data);
+      setValue(data);
+      setUserId(data[0].UserId);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const [value, setValue] = useState([]);
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    getGroups();
+    getUser();
+  }, []);
+
+  async function getUser() {
+    try {
+      const { data } = await axios.get(url + "/users/" + userId, {
+        headers: {
+          Authorization: `Bearer ${localStorage.access_token}`,
+        },
+      });
+      setLoggedUser(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const [loggedUser, setLoggedUser] = useState(null);
+
   return (
     <>
       {/* TopBar */}
+
       <section className="wholeOuterProfile">
         <div className="topBar">
           <div className="titleContainer container-fluid">
@@ -25,13 +96,14 @@ export default function Home() {
                 style={{ display: "flex", alignItems: "center" }}
               >
                 <box-icon type="solid" name="message-square-add" />
-                <a
+                <Link
+                  to={"/new-group"}
                   style={{ marginRight: 20, marginLeft: 5 }}
                   className="link-dark link-offset-2 link-underline link-underline-opacity-0"
                   href=""
                 >
                   New Group
-                </a>
+                </Link>
               </div>
               <div style={{ display: "flex", alignItems: "center" }}>
                 <box-icon name="log-in-circle" type="solid" />
@@ -93,82 +165,24 @@ export default function Home() {
               {/* GroupList */}
               <h3 className="groupList">Group List</h3>
               <div className="srcollBarHome">
-                <div className="animate-slide">
-                  <div className="imageContainerHome-slide">
-                    <div className="groupListHome">
-                      <img
-                        src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        className="rounded-circle groupImageHome"
-                      />
-                      <p className="groupNameCard">Food Hunter</p>
-                      <button className="btn">Join</button>
-                    </div>
-                    <div className="groupListHome">
-                      <img
-                        src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        className="rounded-circle groupImageHome"
-                      />
-                      <p className="groupNameCard">Food Hunter Too Long</p>
-                      <button className="btn">Join</button>
-                    </div>
-                    <div className="groupListHome">
-                      <img
-                        src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        className="rounded-circle groupImageHome"
-                      />
-                      <p className="groupNameCard">Food Hunter</p>
-                      <button className="btn">Join</button>
-                    </div>
-                    <div className="groupListHome">
-                      <img
-                        src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        className="rounded-circle groupImageHome"
-                      />
-                      <p className="groupNameCard">Food Hunter</p>
-                      <button className="btn">Join</button>
-                    </div>
-                    <div className="groupListHome">
-                      <img
-                        src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        className="rounded-circle groupImageHome"
-                      />
-                      <p className="groupNameCard">Food Hunter</p>
-                      <button className="btn">Join</button>
-                    </div>
-                    <div className="groupListHome">
-                      <img
-                        src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        className="rounded-circle groupImageHome"
-                      />
-                      <p className="groupNameCard">Food Hunter</p>
-                      <button className="btn">Join</button>
-                    </div>
-                    <div className="groupListHome">
-                      <img
-                        src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        className="rounded-circle groupImageHome"
-                      />
-                      <p className="groupNameCard">Food Hunter</p>
-                      <button className="btn">Join</button>
-                    </div>
-                    <div className="groupListHome">
-                      <img
-                        src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        className="rounded-circle groupImageHome"
-                      />
-                      <p className="groupNameCard">Food Hunter</p>
-                      <button className="btn">Join</button>
-                    </div>
-                    <div className="groupListHome">
-                      <img
-                        src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        className="rounded-circle groupImageHome"
-                      />
-                      <p className="groupNameCard">Food Hunter</p>
-                      <button className="btn">Join</button>
-                    </div>
-                  </div>
-                </div>
+                {value.map((el) => {
+                  return (
+                    <>
+                      <div className="animate-slide">
+                        <div className="imageContainerHome-slide">
+                          <div className="groupListHome">
+                            <img
+                              src={el.Group.groupPicture}
+                              className="rounded-circle groupImageHome"
+                            />
+                            <p className="groupNameCard">{el.Group.name}</p>
+                            <Link to={`/group/${el.Group.id}`} className="btn">GO</Link>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  );
+                })}
               </div>
               {/* GroupList */}
             </div>
@@ -190,7 +204,9 @@ export default function Home() {
                       }}
                     >
                       <p className="profleData">User Name:</p>
-                      <p className="profleData">Andy</p>
+                      <p className="profleData">
+                        {loggedUser && loggedUser.fullName}
+                      </p>
                     </div>
                     <div
                       style={{
@@ -199,7 +215,9 @@ export default function Home() {
                       }}
                     >
                       <p className="profleData">Email:</p>
-                      <p className="profleData">andy@mail.com</p>
+                      <p className="profleData">
+                        {loggedUser && loggedUser.email}
+                      </p>
                     </div>
                     <div
                       style={{
@@ -208,19 +226,25 @@ export default function Home() {
                       }}
                     >
                       <p className="profleData">Member since:</p>
-                      <p className="profleData">17 August 2021</p>
+                      <p className="profleData">
+                        {loggedUser &&
+                          new Date(loggedUser.createdAt).toLocaleDateString(
+                            "ID-Id"
+                          )}
+                      </p>
                     </div>
                   </div>
                   <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <a
+                    <Link
+                      to={`/edit-profile/{id}`}
                       href=""
                       style={{ width: 320, textAlign: "center" }}
                       className="link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 editButton"
                     >
                       Edit Profile
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

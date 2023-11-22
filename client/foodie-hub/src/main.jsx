@@ -1,4 +1,5 @@
 import React from "react";
+// import { Provider } from 'react-redux';
 import ReactDOM from "react-dom/client";
 import {
   RouterProvider,
@@ -18,6 +19,8 @@ import Group from "./views/Group";
 import Home from "./views/Home";
 import { Form } from "./views/Form";
 import redirectIfAuthenticated, { redirectIfUnauthenticated } from "./middlewares/authentication";
+
+// import store from "./store/index"
 
 // Your web app's Firebase configuration``
 const firebaseConfig = {
@@ -82,6 +85,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    {/* <Provider store={store}> */}
     <RouterProvider router={router} />
+    {/* </Provider> */}
   </React.StrictMode>
 );

@@ -38,18 +38,30 @@ class AuthController {
             const { code } = req.body
             // console.log(code);
             const client = new OAuth2Client();
-
+            // console.log(client);
             const ticket = await client.verifyIdToken({
                 idToken: code,
                 audience: process.env.GOOGLE_CLIENT_ID,
             });
             const payload = ticket.getPayload()
-            const { email, sub, name } = ticket.getPayload();
+            const { email, sub, name } = payload;
 
             // console.log(ticket);
-            const user = await User.findOrCreate({ where: { email, password: sub, fullName: name } });
+            const user = await User.findOne({
+                where: {
+                    email
+                }
+            })
+
+            if (!user) {
+                await User.create({
+                    email,
+                    fullName: name,
+                    password: sub
+                })
+            }
             // console.log(user);
-            const access_token = createToken({ id: user[0].id })
+            const access_token = createToken({ id: user.id })
             // console.log(access_token);
 
             res.status(200).json({access_token, name: user.fullName, id: user.id});

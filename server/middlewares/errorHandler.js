@@ -1,10 +1,12 @@
 function errorHandler(error, req, res, next) {
-    console.log(error) //for development only
+    // console.log(error) //for development only
     switch (error.name) {
         case "InvalidToken":
         case "Unauthenticated":
+            res.status(401).json({ message: 'Invalid Email or Password' });
+            break;
         case "JsonWebTokenError":
-            res.status(401).json({ message: error.message });
+            res.status(401).json({ message: "Invalid Token" });
             break;
         case "DuplicatedData":
             res.status(400).json({message: `${error.memberName} already in your group`})    

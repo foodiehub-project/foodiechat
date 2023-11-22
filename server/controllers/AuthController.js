@@ -26,7 +26,7 @@ class AuthController {
             const access_token = createToken({ id: user.id });
 
             // send response
-            res.status(200).json({ access_token});
+            res.status(200).json({ access_token, name: user.fullName, id: user.id});
         } catch (error) {
             next(error);
         }
@@ -52,7 +52,7 @@ class AuthController {
             const access_token = createToken({ id: user[0].id })
             // console.log(access_token);
 
-            res.status(200).json(access_token);
+            res.status(200).json({access_token, name: user.fullName, id: user.id});
         } catch (error) {
             console.log(error.message);
             next(error)

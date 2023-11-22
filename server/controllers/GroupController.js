@@ -73,14 +73,14 @@ class GroupController {
                     }
                 }
             });
-            
+
             if (!selectedGroup) {
                 throw { name: "NotFound" };
             }
 
             res.status(200).json(selectedGroup);
         }
-        catch(error) {
+        catch (error) {
             next(error);
         }
     }

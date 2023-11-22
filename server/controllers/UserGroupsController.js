@@ -91,7 +91,7 @@ class UserGroupsController {
                     ]
                 }
             })
-            
+
             res.status(200).json(members)
         } catch (error) {
             next(error)

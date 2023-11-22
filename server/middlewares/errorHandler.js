@@ -14,7 +14,7 @@ function errorHandler(error, req, res, next) {
             res.status(400).json({ message: "You have to input image file" })
             break;
         case "InvalidInput":
-            res.status(400).json({ message: error.message });
+            res.status(400).json({ message: `${err.field} is required` });
             break;
         case "SequelizeUniqueConstraintError":
         case "SequelizeValidationError":

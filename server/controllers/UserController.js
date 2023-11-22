@@ -15,24 +15,25 @@ cloudinary.config({
 
 
 class UserController {
-    static async editProfile() {
+    static async editProfile(req, res, next) {
         try {
             const { userId } = req.params;
-            const { fullName } = req.body;
+            const {fullName} = req.body
+            // console.log(fullName);
 
             if (!req.file) throw { name: 'ValidationError' };
             const base64File = Buffer.from(req.file.buffer).toString('base64');
             const dataURI = `data:${req.file.mimetype};base64,${base64File}`;
             const data = await cloudinary.uploader.upload(dataURI, {
                 public_id: `${req.file.originalname}_${randomUUID()}`,
-                folder: 'news'
+                folder: 'foodie'
             });
 
             const user = User.findByPk(userId);
 
             if (!user) throw { name: "NotFound" };
 
-            await User.update({ profilePicture: data.secure_url, fullName }, {
+            await User.update({ profilePicture: data.secure_url, fullName}, {
                 where: {
                     id: userId
                 }

@@ -8,6 +8,6 @@ const upload = multer({ storage: storage });
 
 router.get("/", UserController.getUser);
 
-router.put('/:userId', upload.single('imgUrl'), UserController.editProfile);
+router.put('/:userId', upload.single('profilePicture'), UserController.editProfile);
 
 module.exports = router;

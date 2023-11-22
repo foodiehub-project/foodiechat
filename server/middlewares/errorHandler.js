@@ -6,6 +6,9 @@ function errorHandler(error, req, res, next) {
         case "JsonWebTokenError":
             res.status(401).json({ message: error.message });
             break;
+        case "DuplicatedData":
+            res.status(400).json({message: `${error.memberName} already in your group`})    
+        break;
         case 'ValidationError':
             res.status(400).json({message: "You have to input image file"})
             break;

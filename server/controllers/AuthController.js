@@ -34,19 +34,17 @@ class AuthController {
 
     static async googleLogin(req, res, next) {
         try {
-            // console.log(req.body);
             const { code } = req.body
-            // console.log(code);
             const client = new OAuth2Client();
-            // console.log(client);
+
             const ticket = await client.verifyIdToken({
                 idToken: code,
                 audience: process.env.GOOGLE_CLIENT_ID,
             });
+            
             const payload = ticket.getPayload()
             const { email, sub, name } = payload;
 
-            // console.log(ticket);
             const user = await User.findOne({
                 where: {
                     email
@@ -60,9 +58,8 @@ class AuthController {
                     password: sub
                 })
             }
-            // console.log(user);
+
             const access_token = createToken({ id: user.id })
-            // console.log(access_token);
 
             res.status(200).json({ access_token, name: user.fullName, id: user.id });
         } catch (error) {

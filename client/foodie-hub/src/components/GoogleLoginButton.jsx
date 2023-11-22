@@ -14,6 +14,7 @@ const GoogleLoginButton = () => {
           <GoogleLogin
             onSuccess={async (credentialResponse) => {
               try {
+                // console.log('masuk sini');
                 // console.log(credentialResponse.credential);
                 const { data } = await axios.post(
                   url + "/auth/google/callback",
@@ -22,8 +23,9 @@ const GoogleLoginButton = () => {
                   }
                 );
                 // console.log(data, '<<< credentials');
+                console.log(data);
 
-                localStorage.setItem("access_token", data);
+                localStorage.setItem("access_token", data.access_token);
                 navigate("/");
               } catch (error) {
                 console.error("Login failed:", error.message);

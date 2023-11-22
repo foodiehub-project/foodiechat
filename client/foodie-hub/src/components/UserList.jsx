@@ -5,7 +5,7 @@ export default function UserList() {
     const [users, setUsers] = useState([]);
     
     useEffect((ignore) => {
-        let ignore = false;
+        // let ignore = false;
 
         fetchUsers(ignore)
 

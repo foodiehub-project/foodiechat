@@ -1,5 +1,5 @@
 'use strict';
-const { UserGroup, Group } = require('../models')
+const { UserGroup, Group, User } = require('../models')
 
 class UserGroupsController {
 
@@ -31,15 +31,9 @@ class UserGroupsController {
 
     static async leaveGroup(req, res, next) {
         try {
-            const { userGroupId } = req.params
-
-            const userGroup = await UserGroup.findByPk(userGroupId, {
-                include: {
-                    model: Group
-                }
-            })
-        
-            if (!userGroup) throw { name: "NotFound" }
+            const { groupId } = req.params
+            const user = req.user
+            const UserId = user.id
 
             await UserGroup.destroy({
                 where: {
@@ -53,11 +47,31 @@ class UserGroupsController {
         }
     }
 
-    static async addMember() {
+    static async addMember(req, res, next) {
         try {
-            
+            const { groupId } = req.params
+            const { UserId } = req.body
+
+            const memberToAdd = await UserGroup.findOne({
+                where: {
+                    GroupId: groupId,
+                    UserId
+                },
+                include: {
+                    model: User
+                }
+            })
+
+            if (memberToAdd) throw { name: "DuplicatedData", memberName: memberToAdd.User.fullName }
+
+            await UserGroup.create({
+                UserId,
+                GroupId: groupId
+            })
+
+            res.status(201).json({ message: `You have added new member to the group` })
         } catch (error) {
-            next(error)
+            next(error);
         }
     }
 }

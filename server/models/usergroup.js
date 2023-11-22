@@ -17,17 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   UserGroup.init({
     role: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: {
-          args: true,
-          msg: "User Role must not be empty"
-        },
-        notEmpty: {
-          args: true,
-          msg: "User Role must not be empty"
-        },
-      },
+      defaultValue: "member"
     },
     GroupId: {
       type: DataTypes.INTEGER,
@@ -60,11 +50,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'UserGroup',
-  });
-  UserGroup.beforeCreate((user) => {
-    if(!user.role) {
-      user.role = "member"
-    }
   });
   return UserGroup;
 };

@@ -17,6 +17,7 @@ import Login from './views/Login';
 import Group from "./views/Group";
 import Home from "./views/Home";
 import { Form } from "./views/Form";
+import redirectIfAuthenticated, { redirectIfUnauthenticated } from "./middlewares/authentication";
 
 // Your web app's Firebase configuration``
 const firebaseConfig = {
@@ -37,32 +38,43 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    loader: redirectIfUnauthenticated,
   },
   {
     path: "/new-group",
-    element: <Form/>
+    element: <Form />,
+    loader: redirectIfUnauthenticated,
+  },
+  {
+    path: "/edit-profile/:userId",
+    element: <Form />,
+    loader: redirectIfUnauthenticated,
   },
   {
     path: "/",
     element: <MainLayout />,
+    loader: redirectIfUnauthenticated,
     children: [
       {
         path: "group/:groupId",
         element: <Group />,
+        loader: redirectIfUnauthenticated,
       },
       {
         path: "group/:groupId/edit",
+        loader: redirectIfUnauthenticated,
       },
     ],
   },
-
   {
     path: "/login",
     element: <LoginLayout />,
+    loader: redirectIfAuthenticated,
     children: [
       {
         path: "",
         element: <Login />,
+        loader: redirectIfAuthenticated,
       },
     ],
   },

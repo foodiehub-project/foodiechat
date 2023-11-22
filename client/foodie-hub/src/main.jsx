@@ -38,6 +38,10 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
+    path: "/new-group",
+    element: <></>
+  }
+  {
     path: "/",
     element: <MainLayout />,
     children: [

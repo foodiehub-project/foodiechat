@@ -17,15 +17,19 @@ class UserController {
 
     static async getUserDetail(req, res, next) {
         try {
+
             const { userId } = req.params
 
-            const user = await User.findByPk(id, {
+            const user = await User.findOne({
                 attributes: [
-                    "email", "fullname", "wallpaper", "profilePicture", "createdAt"
-                ]
+                    "email", "fullName", "wallpaper", "profilePicture", "createdAt"
+                ],
+                where: {
+                    id: userId
+                }
             })
-
-            if (!user) throw {name: "NotFound"}
+            console.log(user);
+            if (!user) throw { name: "NotFound" }
 
             res.status(200).json(user);
         } catch (error) {

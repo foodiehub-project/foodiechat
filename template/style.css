@@ -474,7 +474,7 @@ textarea {
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    animation: slide 15s infinite linear;
+    animation: slide 15s infinite linear;;
 }
 
 @keyframes slide {
@@ -542,7 +542,6 @@ textarea {
     text-align: left;
     z-index: 1;
     color: white;
-    /* padding: 20px; */
     max-width: 80%;
 }
 

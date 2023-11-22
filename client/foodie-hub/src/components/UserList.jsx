@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import swal from "sweetalert";
-import { useParams } from "react-router-dom"
-import axios from "axios"
-import BASE_URL from "../BaseUrl";
+
 
 export default function UserList() {
     const { groupId } = useParams()
@@ -18,20 +16,7 @@ export default function UserList() {
 
     const fetchUsers = async (ignore) => {
         try {
-            const { data } = axios({
-                    method: "get",
-                    url: `${"http://localhost:3000"}/groups/${groupId}`,
-                    headers: {
-                        authorization: `Bearer ${localStorage.access_token}`
-                    }
-                })
 
-            if(!ignore) {
-                setUsers(data.UserGroups);
-            }
-        }
-        catch(error) {
-            console.log(error)
             swal({
                 text: error.response.data.message,
                 icon: "error"

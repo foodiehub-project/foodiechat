@@ -627,12 +627,12 @@ textarea {
     border-radius: 25px!important;
 }
 
-/* .groupImage {
+.groupImageForm {
     margin-top: 70px;
     height: 30vh;
     width: 30vh;
     border: 1.5px solid #f5f6fa;
-} */
+}
 
 .buttonOuter{
     width: 200px;

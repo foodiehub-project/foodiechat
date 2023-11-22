@@ -16,6 +16,7 @@ import MainLayout from "./layouts/MainLayout";
 import Login from './views/Login';
 import Group from "./views/Group";
 import Home from "./views/Home";
+import { Form } from "./views/Form";
 
 // Your web app's Firebase configuration``
 const firebaseConfig = {
@@ -39,8 +40,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/new-group",
-    element: <></>
-  }
+    element: <Form/>
+  },
   {
     path: "/",
     element: <MainLayout />,

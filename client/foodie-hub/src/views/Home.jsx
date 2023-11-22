@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUserGroups } from "../store/userGroups";
+// import { fetchUserGroups } from "../store/userGroups";
 import { useEffect, useState } from "react";
 import url from "../constants";
 

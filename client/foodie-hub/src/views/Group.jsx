@@ -11,16 +11,23 @@ import {
   where,
   serverTimestamp,
 } from "firebase/firestore";
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import swal from "sweetalert"
+import axios from "axios";
+import BASE_URL from "../BaseUrl";
 
 export default function Group() {
+    const navigate = useNavigate();
     const [groupMessages, setGroupMessages] = useState([]);
     const [message, setMessage] = useState("");
     const { groupId } = useParams()
     const scroll = useRef();
 
     useEffect(() => {
+        let ignore = false;
+        if(!ignore) [
+            checkForGroup()
+        ]
         const q = query(
           collection(db, "messages"),
           where("groupId", "==", +groupId),
@@ -39,7 +46,36 @@ export default function Group() {
         });
         return () => unsubscribe;
     }, []);
-    
+
+    const checkForGroup = async () => {
+        try {
+            const selectedGroup = await axios({
+                method: "get",
+                url: `${BASE_URL}/groups/${groupId}`,
+                headers: {
+                    authorization: `Bearer ${localStorage.access_token}`
+                }
+            });
+            if(!selectedGroup) {
+                throw { name: "GroupNotFound" };
+            }
+        }
+        catch(error) {
+            if(error.name === "GroupNotFound") {
+                swal({
+                    text: "Data Not Found",
+                    icon: "error"
+                });
+                navigate("/")
+            }
+            else {
+                swal({
+                    text: error.response.data.message,
+                    icon: "error"
+                });
+            }
+        }
+    }
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log(groupMessages, "<<<<<<<<")
@@ -83,39 +119,7 @@ export default function Group() {
       <p className="groupName">Food Lovers</p>
     </div>
     <div className="containerChat">
-      {/* UserList */}
-      <div className="userContext">
-        <p className="userList">Chat Participant's</p>
-        <div className="containerUList">
-          <img
-            src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-            className="rounded-circle user_img_msg"
-          />
-          <p className="userByList">Andy</p>
-        </div>
-        <div className="containerUList">
-          <img
-            src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-            className="rounded-circle user_img_msg"
-          />
-          <p className="userByList">Lisa</p>
-        </div>
-        <div className="containerUList">
-          <img
-            src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-            className="rounded-circle user_img_msg"
-          />
-          <p className="userByList">Ito</p>
-        </div>
-        <div className="containerUList">
-          <img
-            src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-            className="rounded-circle user_img_msg"
-          />
-          <p className="userByList">Uvuweveosas</p>
-        </div>
-      </div>
-      {/* UserList */}
+      <UserList />
       {/* ChatBubble */}
       <div className="chatContext">
         <div className="chatBubbleContainer">

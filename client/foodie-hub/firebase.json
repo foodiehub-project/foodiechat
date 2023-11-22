@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "foodiehub",
+    "public": "foodie-hub",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

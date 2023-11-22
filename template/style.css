@@ -248,7 +248,6 @@ body {
     height: 40px;
     width: 40px;
     border: 1.5px solid #f5f6fa;
-
 }
 
 .card-footer {
@@ -463,7 +462,7 @@ textarea {
     overflow-x: auto;
 }
 
-.srcollBarHome:hover .imageContainerHome-slide{
+.srcollBarHome:hover .imageContainerHome-slide {
     animation-play-state: paused;
 }
 
@@ -474,7 +473,8 @@ textarea {
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    animation: slide 15s infinite linear;;
+    animation: slide 15s infinite linear;
+    ;
 }
 
 @keyframes slide {
@@ -561,15 +561,108 @@ textarea {
 }
 
 /* Add Group */
+.groupSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
 
 .groupContent {
     margin-top: 20px;
     background-color: rgba(255, 255, 255, 0.506);
-    width: 102vh;
-    height: 76.3vh;
+    width: 110vh;
+    height: 70vh;
     /* padding: 20px 20px 20px 20px; */
     justify-content: space-around;
     border-radius: 25px;
     align-items: center;
     backdrop-filter: blur(50px) !important;
+}
+
+.formOuter {
+    margin-top: 80px;
+    margin-left: 90px;
+    align-items: center!important;
+}
+
+
+/* Login */
+.sectionLogin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.loginContainer {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    /* padding: 20vh 20vh 20vh 20vh; */
+    /* margin-left: 3vh;
+    margin-top: 11vh; */
+    width: 120vh;
+    height: 70vh;
+    background-color: rgba(255, 255, 255, 0.358);
+    border-radius: 25px;
+    backdrop-filter: blur(30px);
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
+}
+
+.welcomeText {
+    padding-left: 20vh;
+    padding-right: 20vh;
+    text-align: center;
+}
+
+.imageOuter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 110vh;
+    height: 33vh;
+    border-radius: 25px!important;
+}
+
+.groupImage {
+    margin-top: 70px;
+    height: 30vh;
+    width: 30vh;
+    border: 1.5px solid #f5f6fa;
+}
+
+.buttonOuter{
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.customForm {
+    max-width: 70vh;
+    border-radius: 15px !important;
+    background-color: #ffffff88 !important;
+}
+
+.custPosition {
+    text-align: center !important;
+    align-items: center !important;
+    display: flex;
+}
+
+.labelForm {
+    padding-top: 10px;
+    padding-right: 20px;
+    min-width: 125px!important;
+}
+
+.customBtn{
+    margin-left: 16.3vh;
+    min-width: 70vh;
+    max-width: 70vh;
+    border-radius: 15px !important;
+    background-color: #ffffff88 !important;
 }

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import {
   RouterProvider,
   createBrowserRouter,
-  redirect,
+  // redirect,
 } from 'react-router-dom';
 import './style.css';
 
@@ -12,10 +12,11 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 
-import LoginLayout from './layouts/LoginLayout';
+// import LoginLayout from './layouts/LoginLayout';
 import MainLayout from './layouts/MainLayout';
-import Login from './views/Login';
+// import Login from './views/Login';
 import Group from './views/Group';
+import Home from './views/Home'
 
 // Your web app's Firebase configuration``
 const firebaseConfig = {
@@ -34,13 +35,13 @@ export const db = getFirestore(app);
 
 const router = createBrowserRouter([
   {
+    path: '/',
+    element: <Home/>
+  },
+  {
     path: "/",
     element: <MainLayout />,
     children: [
-      {
-        path: "",
-        element: <Group />
-      },
       {
         path: "group/:groupId",
         element: <Group />
@@ -50,16 +51,17 @@ const router = createBrowserRouter([
       }
     ]
   },
-  {
-    path: "/login",
-    element: <LoginLayout />,
-    children: [
-      {
-        path: "",
-        element: <Login />
-      },
-    ]
-  }
+
+  // {
+  //   path: "/login",
+  //   element: <LoginLayout />,
+  //   children: [
+  //     {
+  //       path: "",
+  //       element: <Login />
+  //     },
+  //   ]
+  // }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

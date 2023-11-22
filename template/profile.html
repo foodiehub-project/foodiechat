@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FoodieHub</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    style="
+      background-image: url(https://images.unsplash.com/photo-1682252232345-8254f1d6f636?q=80&w=2912&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    "
+  >
+    <!-- TopBar -->
+    <section class="wholeOuterProfile">
+      <div class="topBar">
+        <div class="titleContainer container-fluid">
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              margin-left: 15px;
+              align-items: center;
+            "
+          >
+            <box-icon name="cookie" type="solid" animation="tada"></box-icon>
+            <div class="" style="font-size: 30px; margin-left: 5px">
+              FoodieHub
+            </div>
+          </div>
+          <div style="display: flex">
+            <div class="" style="display: flex; align-items: center">
+              <box-icon type="solid" name="message-square-add"></box-icon>
+              <a
+                style="margin-right: 20px; margin-left: 5px"
+                class="link-dark link-offset-2 link-underline link-underline-opacity-0"
+                href=""
+                >New Group</a
+              >
+            </div>
+            <div style="display: flex; align-items: center">
+              <box-icon name="log-in-circle" type="solid"></box-icon>
+              <a
+                style="margin-right: 20px; margin-left: 5px"
+                class="link-dark link-offset-2 link-underline link-underline-opacity-0"
+                href=""
+                >Logout</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- TopBar -->
+
+      <!-- GroupContainer -->
+      <div class="profileContainer">
+        <div class="cardContent">
+          <!-- BannerCarrousel -->
+          <div
+            id="carouselExampleAutoplaying"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div id="teksOverlay" class="card-img-overlay">
+              <h2 class="card-title">Welcome to FoodieHub!</h2>
+              <p style="color: rgba(255, 255, 255, 0.756)">
+                "Foodie Hub—where flavors unite! Join us for the latest recipes,
+                top dining spots, and all things delicious. Let's embark on an
+                unforgettable taste journey together!"
+              </p>
+            </div>
+            <div class="carousel-inner carousel">
+              <div class="carousel-item active imageCarrousel">
+                <img
+                  src="https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?q=80&w=2624&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item imageCarrousel">
+                <img
+                  src="https://images.unsplash.com/photo-1497888329096-51c27beff665?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item imageCarrousel">
+                <img
+                  src="https://images.unsplash.com/photo-1494597564530-871f2b93ac55?q=80&w=2913&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+            </div>
+          </div>
+          <!-- BannerCarrousel -->
+          <div>
+            <!-- GroupList -->
+            <h3 class="groupList">Group List</h3>
+            <div class="srcollBarHome">
+              <div class="animate-slide">
+                <div class="imageContainerHome-slide">
+                  <div class="groupListHome">
+                    <img
+                      src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      class="rounded-circle groupImageHome"
+                    />
+                    <p class="groupNameCard">Food Hunter</p>
+                    <button class="btn">Join</button>
+                  </div>
+                  <div class="groupListHome">
+                    <img
+                      src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      class="rounded-circle groupImageHome"
+                    />
+                    <p class="groupNameCard">Food Hunter Too Long</p>
+                    <button class="btn">Join</button>
+                  </div>
+                  <div class="groupListHome">
+                    <img
+                      src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      class="rounded-circle groupImageHome"
+                    />
+                    <p class="groupNameCard">Food Hunter</p>
+                    <button class="btn">Join</button>
+                  </div>
+                  <div class="groupListHome">
+                    <img
+                      src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      class="rounded-circle groupImageHome"
+                    />
+                    <p class="groupNameCard">Food Hunter</p>
+                    <button class="btn">Join</button>
+                  </div>
+                  <div class="groupListHome">
+                    <img
+                      src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      class="rounded-circle groupImageHome"
+                    />
+                    <p class="groupNameCard">Food Hunter</p>
+                    <button class="btn">Join</button>
+                  </div>
+                  <div class="groupListHome">
+                    <img
+                      src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      class="rounded-circle groupImageHome"
+                    />
+                    <p class="groupNameCard">Food Hunter</p>
+                    <button class="btn">Join</button>
+                  </div>
+                  <div class="groupListHome">
+                    <img
+                      src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      class="rounded-circle groupImageHome"
+                    />
+                    <p class="groupNameCard">Food Hunter</p>
+                    <button class="btn">Join</button>
+                  </div>
+                  <div class="groupListHome">
+                    <img
+                      src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      class="rounded-circle groupImageHome"
+                    />
+                    <p class="groupNameCard">Food Hunter</p>
+                    <button class="btn">Join</button>
+                  </div>
+                  <div class="groupListHome">
+                    <img
+                      src="https://images.unsplash.com/photo-1638643391904-9b551ba91eaa?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      class="rounded-circle groupImageHome"
+                    />
+                    <p class="groupNameCard">Food Hunter</p>
+                    <button class="btn">Join</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- GroupList -->
+          </div>
+        </div>
+
+        <!-- Profile Card -->
+        <div class="profileContent">
+          <div class="dataUSer">
+            <div class="profileOuter">
+              <div class="cardProfile">
+                <img
+                  src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  class="profileImage"
+                />
+                <div class="infoWrap">
+                  <div style="display: flex; justify-content: space-between">
+                    <p class="profleData">User Name:</p>
+                    <p class="profleData">Andy</p>
+                  </div>
+                  <div style="display: flex; justify-content: space-between">
+                    <p class="profleData">Email:</p>
+                    <p class="profleData">andy@mail.com</p>
+                  </div>
+                  <div style="display: flex; justify-content: space-between">
+                    <p class="profleData">Member since:</p>
+                    <p class="profleData">17 August 2021</p>
+                  </div>
+                </div>
+                <div style="display: flex; justify-content: space-between">
+                  <a
+                    href=""
+                    style="width: 320px; text-align: center"
+                    class="link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 editButton"
+                    >Edit Profile</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Profile Card -->
+      </div>
+      <!-- GroupContainer -->
+    </section>
+    <script>
+      let copy = document
+        .querySelector(".imageContainerHome-slide")
+        .cloneNode(true);
+      document.querySelector(".srcollBarHome").appendChild(copy);
+      document.querySelector(".srcollBarHome").appendChild(copy);
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  </body>
+</html>

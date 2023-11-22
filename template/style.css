@@ -20,10 +20,10 @@ body {
 .sideBar {
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
-    margin-top: 20px;
+    margin-left: 10vh;
+    margin-top: 11vh;
     width: 10vh;
-    height: 95vh;
+    height: 77.6vh;
     background-color: rgba(255, 255, 255, 0.375);
     border-radius: 17px;
     backdrop-filter: blur(20px);
@@ -48,8 +48,9 @@ body {
 }
 
 .srcollBar {
-    min-height: 55vh;
-    max-height: 55vh;
+    margin-top: 20px;
+    min-height: 35vh;
+    max-height: 35vh;
     overflow-y: auto;
     /* overflow: hidden; */
 }
@@ -61,10 +62,10 @@ body {
 .chatContainer {
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
-    margin-top: 20px;
-    width: 170vh;
-    height: 95vh;
+    margin-left: 3vh;
+    margin-top: 11vh;
+    width: 150vh;
+    height: 77.6vh;
     background-color: rgba(255, 255, 255, 0.358);
     border-radius: 25px;
     backdrop-filter: blur(30px);
@@ -72,7 +73,7 @@ body {
 }
 
 .scrollBubble {
-    max-height: 550px;
+    max-height: 390px;
     /* Atur ketinggian maksimum untuk scroll */
     overflow-y: auto;
 }
@@ -80,8 +81,8 @@ body {
 .chatContext {
     margin-left: 20px;
     /* margin-top: 10px; */
-    width: 122.3vh;
-    height: 75vh;
+    width: 102.5vh;
+    height: 55vh;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 25px;
     backdrop-filter: blur(50px);
@@ -92,7 +93,7 @@ body {
     margin-left: 20px;
     /* margin-top: 10px; */
     width: 40vh;
-    height: 75vh;
+    height: 65vh;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 25px;
     backdrop-filter: blur(50px);
@@ -103,10 +104,11 @@ body {
 }
 
 .sendBar {
-    margin-left: 20px;
-    margin-top: 10px;
+    position: absolute;
+    margin-left: 45.2vh;
+    margin-top: 67vh;
     margin-bottom: 20px;
-    width: 165vh;
+    width: 102.5vh;
     height: 7vh;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 17px;
@@ -313,6 +315,7 @@ textarea {
 
 .topBar {
     display: flex;
+    justify-content: center;
     flex-direction: column;
     /* margin-left: 20px; */
     margin-top: 7vh;
@@ -449,21 +452,39 @@ textarea {
     box-shadow: rgba(149, 157, 165, 0.36) 0px 8px 24px;
 }
 
-.imageContainerHome {
-    padding: 10px 10px 30px 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
 .srcollBarHome {
+    display: inline-block;
+    display: flex !important;
     margin-left: 20px;
     min-width: 70vh;
     max-width: 97vh;
+    white-space: nowrap;
+    flex-direction: row;
     overflow-x: auto;
-    /* overflow: hidden; */
+}
+
+.srcollBarHome:hover .imageContainerHome-slide{
+    animation-play-state: paused;
+}
+
+.imageContainerHome-slide {
+    padding: 10px 10px 30px 10px;
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    animation: slide 15s infinite linear;
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
 }
 
 .srcollBarHome::-webkit-scrollbar {
@@ -485,12 +506,23 @@ textarea {
     background-color: rgba(255, 255, 255, 0.461);
     padding: 8px 12px;
     border-radius: 17px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.4s ease-in-out;
+
     /* box-shadow: rgba(149, 157, 165, 0.36) 0px 8px 24px; */
 }
 
-.groupListHome {
-    display: flex;
-    flex-direction: column;
+.groupListHome:hover {
+    -webkit-transform: scale(1.08);
+    transform: scale(1.08);
+    position: relative;
+    width: 100%;
+    height: 200px max-content;
+    margin: 0 auto;
+    overflow: hidden;
+    transition: 0.4s ease-in-out;
+    background-color: palevioletred;
 }
 
 .groupNameCard {
@@ -521,3 +553,11 @@ textarea {
 .carousel-item {
     position: relative;
 }
+
+.titleContainer {
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+

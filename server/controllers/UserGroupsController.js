@@ -35,6 +35,13 @@ class UserGroupsController {
             const user = req.user
             const UserId = user.id
 
+            const userGroup = await UserGroup.findOne({
+                where: {
+                    UserId: req.user.id,
+                    GroupId: groupId,
+                }
+            });
+
             await UserGroup.destroy({
                 where: {
                     UserId,
@@ -91,7 +98,7 @@ class UserGroupsController {
                     ]
                 }
             })
-            
+
             res.status(200).json(members)
         } catch (error) {
             next(error)

@@ -22,13 +22,13 @@ class UserController {
 
             const user = await User.findOne({
                 attributes: [
-                    "email", "fullName", "wallpaper", "profilePicture", "createdAt"
+                    "email", "fullName", "wallpaper", "profilePicture", "createdAt", "id"
                 ],
                 where: {
                     id: userId
                 }
             })
-            console.log(user);
+            
             if (!user) throw { name: "NotFound" }
 
             res.status(200).json(user);

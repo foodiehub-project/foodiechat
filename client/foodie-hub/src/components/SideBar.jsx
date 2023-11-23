@@ -1,14 +1,32 @@
+import {useSelector, useDispatch} from "react-redux";
+import { fetchUserGroups } from "../store/usergroups";
+import { useEffect } from "react";
+
+
 export default function SideBar() {
-  
+  const { data, loading, error } = useSelector(state => state.userGroups);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUserGroups());
+  },[]);
+
   return (
         <div className="sideBar">
     <div className="srcollBar">
-      <div className="imageContainer">
-        <img
-          src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          className="rounded-circle groupImage"
-        />
-      </div>
+      {loading ? (
+        <p>....</p>
+      ) : (
+        data.map((group) => (
+        <div className="imageContainer">
+          <img
+            src={group.Group.groupPicture}
+            className="rounded-circle groupImage"
+          />
+        </div>
+        ))
+      )
+      }
     </div>
     <div className="logoOuter btn cusBtn">
       <box-icon className="logoSize" name="message-square-add" />

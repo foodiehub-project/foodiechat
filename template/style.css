@@ -221,7 +221,7 @@ body {
     border-radius: 17px;
     color: #000;
     font-weight: normal;
-    max-width: fit-content;
+    /* max-width: fit-content; */
     /* box-shadow: rgba(149, 157, 165, 0.142) 0px 8px 24px; */
 }
 

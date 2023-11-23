@@ -59,7 +59,7 @@ export default function Home() {
   const [loggedUser, setLoggedUser] = useState(null);
   async function getUser() {
     try {
-      const { data } = await axios.get(url + "/users/" + userId, {
+      const { data } = await axios.get(url + "/users/" + localStorage.id, {
         headers: {
           Authorization: `Bearer ${localStorage.access_token}`,
         },
@@ -242,7 +242,7 @@ export default function Home() {
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
                     <Link
-                      to={`/edit-profile/${userId}`}
+                      to={`/edit-profile/${localStorage.id}`}
                       href=""
                       style={{ width: 320, textAlign: "center" }}
                       className="link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 editButton"

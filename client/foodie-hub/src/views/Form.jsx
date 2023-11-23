@@ -48,9 +48,13 @@ export const Form = () => {
     e.preventDefault();
 
     const formData = new FormData();
-    
-    formData.append("fullName", fullName);
-    formData.append("profilePicture", profilePicture);
+    if (!userId) {
+      formData.append("name", fullName);
+      formData.append("groupPicture", profilePicture);
+    } else {
+      formData.append("fullName", fullName);
+      formData.append("profilePicture", profilePicture);
+    }
 
     try {
       if (!userId) {

@@ -1,12 +1,13 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 // import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 // import { fetchUserGroups } from "../store/userGroups";
 import { useEffect, useState } from "react";
-import BASE_URL from "../BaseUrl";
+import url from "../constants";
 
 export default function Home() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // const { data, loading, error } = useSelector((state) => state.userGroups)
   // const dispatch = useDispatch()
 
@@ -15,17 +16,16 @@ export default function Home() {
   // }, [dispatch, fetchUserGroups])
 
   // console.log(error);
-  function logout(){
-    localStorage.access_token = ''
-    navigate('/login')
+  function logout() {
+    localStorage.access_token = "";
+    navigate("/login");
   }
-
 
   const [value, setValue] = useState([]);
   const [userId, setUserId] = useState(null);
   async function getGroups() {
     try {
-      const { data } = await axios.get(BASE_URL + "/user-groups", {
+      const { data } = await axios.get(url + "/user-groups", {
         headers: {
           Authorization: `Bearer ${localStorage.access_token}`,
         },
@@ -39,7 +39,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('loggedUser');
+    const storedUser = localStorage.getItem("loggedUser");
     if (storedUser) {
       setLoggedUser(JSON.parse(storedUser));
     }
@@ -47,16 +47,25 @@ export default function Home() {
     getUser();
   }, []);
 
+  // useEffect(() => {
+  //   let copy = document
+  //     .querySelector(".imageContainerHome-slide")
+
+  //     .cloneNode(true);
+  //   document.querySelector(".srcollBarHome")?.appendChild(copy);
+  //   document.querySelector(".srcollBarHome")?.appendChild(copy);
+  // }, []);
+
   const [loggedUser, setLoggedUser] = useState(null);
   async function getUser() {
     try {
-      const { data } = await axios.get(BASE_URL + "/users/" + userId, {
+      const { data } = await axios.get(url + "/users/" + userId, {
         headers: {
           Authorization: `Bearer ${localStorage.access_token}`,
         },
       });
       setLoggedUser(data);
-      localStorage.setItem('loggedUser', JSON.stringify(data));
+      localStorage.setItem("loggedUser", JSON.stringify(data));
       console.log(data);
     } catch (error) {
       console.log(error);
@@ -100,7 +109,7 @@ export default function Home() {
               <div style={{ display: "flex", alignItems: "center" }}>
                 <box-icon name="log-in-circle" type="solid" />
                 <a
-                onClick={logout}
+                  onClick={logout}
                   style={{ marginRight: 20, marginLeft: 5 }}
                   className="link-dark link-offset-2 link-underline link-underline-opacity-0"
                   href=""

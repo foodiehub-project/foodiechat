@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { currentUser } from "./currentUser"
+import userGroups from "./usergroups";
 
-export const store = configureStore({
-    reduce: {
-        currentUser
+const store = configureStore({
+    reducer: {
+        userGroups
     }
 })
+
+export default store

@@ -94,7 +94,7 @@ const userGroups = createSlice({
     }
 });
 
-export const { fetchStart, fetchSuccess } = userGroups.actions;
+export const { fetchStart, fetchSuccess , fetchFailed} = userGroups.actions;
 
 export const fetchUserGroups = () => {
     return async (dispatch, getState) => {

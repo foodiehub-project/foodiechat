@@ -122,7 +122,7 @@ export default function Group() {
     return (
   <div className="chatContainer">
     <div className="groupNameContainer">
-      <p className="groupName">Food Lovers</p>
+      <p className="groupName">Foodie-Hub</p>
     </div>
     <div className="containerChat">
       <UserList />

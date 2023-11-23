@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import url from "../constants";
+import BASE_URL from "../BaseUrl";
 
 export const Form = () => {
   const { userId } = useParams();
@@ -11,7 +11,7 @@ export const Form = () => {
   const [loggedUser, setLoggedUser] = useState(null);
   async function getUser() {
     try {
-      const { data } = await axios.get(url + "/users/" + userId, {
+      const { data } = await axios.get(BASE_URL + "/users/" + userId, {
         headers: {
           Authorization: `Bearer ${localStorage.access_token}`,
         },
@@ -58,7 +58,7 @@ export const Form = () => {
 
     try {
       if (!userId) {
-        const group = await axios.post(url + `/groups`, formData, {
+        const group = await axios.post(BASE_URL + `/groups`, formData, {
           headers: {
             Authorization: `Bearer ${localStorage.access_token}`,
             "Content-Type": "multipart/form-data",
@@ -66,7 +66,7 @@ export const Form = () => {
         });
         console.log(group.data);
       } else {
-        const response = await axios.put(url + `/users/${userId}`, formData, {
+        const response = await axios.put(BASE_URL + `/users/${userId}`, formData, {
           headers: {
             Authorization: `Bearer ${localStorage.access_token}`,
             "Content-Type": "multipart/form-data",

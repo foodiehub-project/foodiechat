@@ -1,7 +1,7 @@
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import url from "../constants";
+import BASE_URL from "../BaseUrl";
 
 const GoogleLoginButton = () => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const GoogleLoginButton = () => {
                 // console.log('masuk sini');
                 // console.log(credentialResponse.credential);
                 const { data } = await axios.post(
-                  url + "/auth/google/callback",
+                  BASE_URL + "/auth/google/callback",
                   {
                     code: credentialResponse.credential,
                   }

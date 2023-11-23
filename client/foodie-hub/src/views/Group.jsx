@@ -44,7 +44,7 @@ export default function Group() {
           );
           setGroupMessages(sortedMessages);
         });
-        return () => unsubscribe;
+        return () => unsubscribe();
     }, []);
 
     const checkForGroup = async () => {
@@ -56,7 +56,14 @@ export default function Group() {
                     authorization: `Bearer ${localStorage.access_token}`
                 }
             });
-            if(!selectedGroup) {
+
+            let isInGroup = false;
+            for(let i = 0; i < selectedGroup.data.UserGroups.length; i++) {
+                if(selectedGroup.data.UserGroups[i].UserId === +localStorage.id) {
+                    isInGroup = true;
+                }
+            }
+            if(!selectedGroup.data || !selectedGroup.data.UserGroups || !isInGroup) {
                 throw { name: "GroupNotFound" };
             }
         }
@@ -78,7 +85,6 @@ export default function Group() {
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(groupMessages, "<<<<<<<<")
         try {
             if(!message) {
                 throw { name: "InvalidMessage" }

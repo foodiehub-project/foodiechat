@@ -1,13 +1,9 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-<<<<<<< Updated upstream
-import { useDispatch, useSelector } from "react-redux";
-=======
 // import { useDispatch, useSelector } from "react-redux";
->>>>>>> Stashed changes
 // import { fetchUserGroups } from "../store/userGroups";
 import { useEffect, useState } from "react";
-import url from "../constants";
+import BASE_URL from "../BaseUrl";
 
 export default function Home() {
   const navigate = useNavigate()
@@ -29,7 +25,7 @@ export default function Home() {
   const [userId, setUserId] = useState(null);
   async function getGroups() {
     try {
-      const { data } = await axios.get(url + "/user-groups", {
+      const { data } = await axios.get(BASE_URL + "/user-groups", {
         headers: {
           Authorization: `Bearer ${localStorage.access_token}`,
         },
@@ -54,7 +50,7 @@ export default function Home() {
   const [loggedUser, setLoggedUser] = useState(null);
   async function getUser() {
     try {
-      const { data } = await axios.get(url + "/users/" + userId, {
+      const { data } = await axios.get(BASE_URL + "/users/" + userId, {
         headers: {
           Authorization: `Bearer ${localStorage.access_token}`,
         },

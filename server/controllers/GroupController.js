@@ -20,6 +20,7 @@ class GroupController {
             res.status(201).json({ message: `Group ${createGroup.name} has been created` });
         }
         catch (error) {
+            console.log(error, "error add");
             next(error);
         }
     }

@@ -1,28 +1,28 @@
-import { useEffect, useState } from "react";
-import swal from "sweetalert";
+// import { useEffect, useState } from "react";
+// import swal from "sweetalert";
 
 
 export default function UserList() {
-    const { groupId } = useParams()
-    const [users, setUsers] = useState([]);
+    // const { groupId } = useParams()
+    // const [users, setUsers] = useState([]);
     
-    useEffect(() => {
-        let ignore = false;
+    // useEffect(() => {
+    //     let ignore = false;
 
-        fetchUsers(ignore)
-        console.log()
-        return () => (ignore = true);
-    })
+    //     fetchUsers(ignore)
+    //     console.log()
+    //     return () => (ignore = true);
+    // })
 
-    const fetchUsers = async (ignore) => {
-        try {
+    // const fetchUsers = async (ignore) => {
+    //     try {
 
-            swal({
-                text: error.response.data.message,
-                icon: "error"
-            })
-        }
-    }
+    //         swal({
+    //             text: error.response.data.message,
+    //             icon: "error"
+    //         })
+    //     }
+    // }
     return (
         <div className="userContext">
         <p className="userList">Chat Participant's</p>

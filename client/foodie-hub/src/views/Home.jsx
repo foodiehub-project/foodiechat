@@ -1,11 +1,16 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+<<<<<<< Updated upstream
 import { useDispatch, useSelector } from "react-redux";
+=======
+// import { useDispatch, useSelector } from "react-redux";
+>>>>>>> Stashed changes
 // import { fetchUserGroups } from "../store/userGroups";
 import { useEffect, useState } from "react";
 import url from "../constants";
 
 export default function Home() {
+  const navigate = useNavigate()
   // const { data, loading, error } = useSelector((state) => state.userGroups)
   // const dispatch = useDispatch()
 
@@ -14,25 +19,14 @@ export default function Home() {
   // }, [dispatch, fetchUserGroups])
 
   // console.log(error);
-  const navigate = useNavigate();
+  function logout(){
+    localStorage.access_token = ''
+    navigate('/login')
+  }
 
-  const handleValue = async (event, groupId) => {
-    event.preventDefault();
-    try {
-      const userData = { groupId };
 
-      const { data } = await axios.post(`${url}/${groupId}`, userData, {
-        headers: {
-          Authorization: `Bearer ${localStorage.access_token}`,
-        },
-      });
-      console.log(data);
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  const [value, setValue] = useState([]);
+  const [userId, setUserId] = useState(null);
   async function getGroups() {
     try {
       const { data } = await axios.get(url + "/user-groups", {
@@ -47,14 +41,17 @@ export default function Home() {
       console.log(error);
     }
   }
-  const [value, setValue] = useState([]);
-  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
+    const storedUser = localStorage.getItem('loggedUser');
+    if (storedUser) {
+      setLoggedUser(JSON.parse(storedUser));
+    }
     getGroups();
     getUser();
   }, []);
 
+  const [loggedUser, setLoggedUser] = useState(null);
   async function getUser() {
     try {
       const { data } = await axios.get(url + "/users/" + userId, {
@@ -63,17 +60,16 @@ export default function Home() {
         },
       });
       setLoggedUser(data);
+      localStorage.setItem('loggedUser', JSON.stringify(data));
       console.log(data);
     } catch (error) {
       console.log(error);
     }
   }
-  const [loggedUser, setLoggedUser] = useState(null);
 
   return (
     <>
       {/* TopBar */}
-
       <section className="wholeOuterProfile">
         <div className="topBar">
           <div className="titleContainer container-fluid">
@@ -108,6 +104,7 @@ export default function Home() {
               <div style={{ display: "flex", alignItems: "center" }}>
                 <box-icon name="log-in-circle" type="solid" />
                 <a
+                onClick={logout}
                   style={{ marginRight: 20, marginLeft: 5 }}
                   className="link-dark link-offset-2 link-underline link-underline-opacity-0"
                   href=""
@@ -176,7 +173,9 @@ export default function Home() {
                               className="rounded-circle groupImageHome"
                             />
                             <p className="groupNameCard">{el.Group.name}</p>
-                            <Link to={`/group/${el.Group.id}`} className="btn">GO</Link>
+                            <Link to={`/group/${el.Group.id}`} className="btn">
+                              GO
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -193,7 +192,7 @@ export default function Home() {
               <div className="profileOuter">
                 <div className="cardProfile">
                   <img
-                    src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    src={loggedUser && loggedUser.profilePicture}
                     className="profileImage"
                   />
                   <div className="infoWrap">
@@ -238,7 +237,7 @@ export default function Home() {
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
                     <Link
-                      to={`/edit-profile/{id}`}
+                      to={`/edit-profile/${userId}`}
                       href=""
                       style={{ width: 320, textAlign: "center" }}
                       className="link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 editButton"
